@@ -8,6 +8,27 @@ Opa {{name}} {{lastName}}, tudo bem?
     Beleza?
 {{/showOld}}
 
+<fieldset>
+    <legend>Formulário Cadastro</legend>
+    <form action="/cadastrar-usuario" method="POST">
+      <input type="text" name="firstname" placeholder="Digite seu nome"><br><br>
+        <input type="text" name="lastName" placeholder="Digite seu sobrenome"><br><br>
+        <input type="email" name="email" placeholder="Digite seu e-mail"><br><br>
+        <input type="number" name="age" placeholder="Digite sua idade atual"><br><br>
+        <input type="text" name="interests" placeholder="Digite seus interesses, separado!"><br><br>
+        <button type="submit">Inserir</button>
+    </form>
+</fieldset>
+
+
+<hr/>
+<h2>Usuarios</h2>
+<ul>
+    {{#users}}
+        <li>{{name.firstName}} - {{age}} anos</li>
+    {{/users}}
+</ul>
+
 <hr/>
 <h2>Produtos</h2>
 <ul>

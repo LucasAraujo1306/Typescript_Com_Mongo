@@ -18,7 +18,7 @@ export const idadeAction = (req: Request, res: Response) => {
     let mostrarIdade: boolean = false;
     let idade: number = 0;
 
-    if(req.body.ano) {
+    if (req.body.ano) {
         let anoNascimento: number = parseInt(req.body.ano as string);
         let anoAtual: number = new Date().getFullYear();
         idade = anoAtual - anoNascimento;
@@ -30,3 +30,16 @@ export const idadeAction = (req: Request, res: Response) => {
         mostrarIdade
     });
 };
+
+export const registrarUsuario = async (req: Request, res: Response) => {
+    const { firstname, lastName, email, age, interests } = req.body;
+    console.log(firstname, lastName, email, age, interests);
+    try {
+
+
+        res.redirect('/');
+    } catch (error) {
+        return res.status(500).json({ menssage: error });
+    }
+
+}

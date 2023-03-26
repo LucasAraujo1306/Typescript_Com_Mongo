@@ -11,8 +11,8 @@ type UserType = {
 }
 
 const schema = new Schema<UserType>({
-    age: { type: Number, required: true },
     email: { type: String, required: true },
+    age: { type: Number, required: true },
     interests: [String],
     name: {
         firstName: { type: String, required: true },
