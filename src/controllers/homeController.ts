@@ -1,4 +1,3 @@
-import { log } from 'console';
 import { Request, Response } from 'express';
 
 import { Product } from '../models/Product';
@@ -86,6 +85,53 @@ export const home = async (req: Request, res: Response) => {
     newUsernew.interests.push('Viajar', 'Comer', 'Tecnologia');
 
     const resultado = await newUsernew.save();*/
+
+
+    //Atualizando dados no banco de dados NoSQL
+    //1° forma: varios dados de uma vez
+    /*await User.updateMany(
+        { age: { $lte: 18 } },
+        { age: 18 }
+    )*/
+
+    //2º forma: um dado de cada vez, o updateOne não retorna nada
+    // await User.findById('641facb8749869e25c041763').updateOne({ email: 'Lucasisaac700@gmail.com' })
+
+    /*await User.updateOne(
+        { email: 'lucasisaac07@gmail.com' },
+        { email: 'lucas123456@gmail.com' }
+    )*/
+    //3º forma: atualizando um dado que você já tem o dado
+
+    /*let user = await User.findOne({ email: 'testeando@gmail.com' })
+
+    if (user) {
+        user.name.lastName = 'Araújo';
+        await user.save();
+    } else {
+        console.log('Usuário não encontrado')
+    }*/
+
+    //4° forma: atualizar e retorna os dados atualizados // pouca utilizada pois teve alterações no mongoose
+    /*let user = await User.findOneAndUpdate(
+        { email: 'jose@gmail.com' },
+        { name: { firstName: 'Raimundo', lastName: 'José' } },
+    )*/
+
+    //Forma de deletar dados no banco de dados NoSQL
+    /*await User.findOneAndDelete({ email: 'Lucasisaac700@gmail.com' })*/
+
+    /*let user = await User.findOne({ email: 'testeando@gmail.com' });
+
+    if (user) {
+        await User.deleteOne({ _id: user._id });
+    } else {
+        console.log('Não foi encontrado nenhum usuário com esse email.');
+    }*/
+
+
+
+
 
     let users = await User.find({}).sort({ "name.firstName": 1 });
 

@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import User from '../models/User'
 
 export const nome = (req: Request, res: Response) => {
     let nome: string = req.query.nome as string;
@@ -33,13 +34,24 @@ export const idadeAction = (req: Request, res: Response) => {
 
 export const registrarUsuario = async (req: Request, res: Response) => {
     const { firstname, lastName, email, age, interests } = req.body;
-    console.log(firstname, lastName, email, age, interests);
-    try {
+
+    const idade = parseInt(age);
+    const array = interests.split(',');
 
 
-        res.redirect('/');
-    } catch (error) {
-        return res.status(500).json({ menssage: error });
-    }
+    await User.create({
+        name: { firstName: firstname, lastName: lastName },
+        email,
+        age: idade,
+        interests: array
+    })
+    res.redirect('/');
+}
+
+export const atualizarUsuario = async (req: Request, res: Response) => {
+
+}
+
+export const deletarUsuario = async (req: Request, res: Response) => {
 
 }
