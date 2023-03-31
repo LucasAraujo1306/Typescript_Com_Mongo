@@ -48,10 +48,29 @@ export const registrarUsuario = async (req: Request, res: Response) => {
     res.redirect('/');
 }
 
-export const atualizarUsuario = async (req: Request, res: Response) => {
+export const addIdade = async (req: Request, res: Response) => {
+    const id = req.params.id
 
+    if (!id) throw new Error(`Error:${id}`)
+    const user = await User.findById({ _id: id })
+    if (user?.age) user.age++
+    user?.save()
+    res.redirect('/');
 }
 
-export const deletarUsuario = async (req: Request, res: Response) => {
+export const diminuiridade = async (req: Request, res: Response) => {
+    const id = req.params.id
 
+    if (!id) throw new Error(`Error:${id}`)
+    const user = await User.findById({ _id: id })
+    if (user?.age) user.age--
+    user?.save()
+    res.redirect('/');
 }
+
+export const excluirUsuario = async (req: Request, res: Response) => {
+    const id = req.params.id;
+    await User.findByIdAndDelete(id);
+    res.redirect('/');
+};
+

@@ -17,4 +17,8 @@ router.post('/idade-resultado', UserController.idadeAction);
 
 router.post('/cadastrar-usuario', UserController.registrarUsuario);
 
+router.get('/usuario/:id/addidade', UserController.addIdade)
+router.get('/usuario/:id/dimidade', UserController.diminuiridade)
+router.post('/usuario/:id/excluir', UserController.excluirUsuario)
+
 export default router;
